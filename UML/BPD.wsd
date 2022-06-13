@@ -1,0 +1,22 @@
+@startuml
+title ADMBK - Teacher proposes course schedule change
+partition System.Main {
+(*) --> "Login"
+if Login Validator then
+-->[true] "Choose System Feature"
+-->[Proposes course schedule change] "Request schedule change"
+note right: Information about:\n -List of Courses\n -Current schedule/Rooms\n -List of available Days/Rooms\n -etc.
+--> "Set Criteria" as C
+note left: Criteria are:\n -Course name\n -Semester/Day\n -Roomnumber/Room availability \n -etc.
+C -->[Accepted by Adm. Employee] "Register in DB"
+-down-> (*)
+C -->[Rejected by Adm. Employee] "C"
+else
+->[false] "Try again"
+}
+partition System.ScheduleDB {
+Schedule --> "Login"
+Schedule --> "Request schedule change"
+"Register in DB" --> Schedule
+}
+@enduml

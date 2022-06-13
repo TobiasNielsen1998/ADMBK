@@ -1,0 +1,14 @@
+<!ELEMENT kurser (kursus+)>
+<!ELEMENT kursus (kursusID,kursusnavn,fakultet,lokale,skema+,underviser)>
+<!ELEMENT kursusID (#PCDATA)>
+<!ELEMENT kursusnavn (#PCDATA)>
+<!ELEMENT fakultet (#PCDATA)>
+<!ELEMENT lokale (#PCDATA)>
+<!ELEMENT skema (#PCDATA)>
+<!ELEMENT underviser (info)>
+<!ELEMENT info (navn,brugerID,cpr,tlf,email)>
+<!ELEMENT navn (#PCDATA)>
+<!ELEMENT brugerID (#PCDATA)>
+<!ELEMENT cpr (#PCDATA)>
+<!ELEMENT tlf (#PCDATA)>
+<!ELEMENT email (#PCDATA)>

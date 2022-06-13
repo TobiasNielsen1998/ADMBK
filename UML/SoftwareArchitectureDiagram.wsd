@@ -1,0 +1,43 @@
+@startuml
+top to bottom direction
+
+
+title ADMBK
+
+frame ADMBKsystem{
+    frame "1 USERS" as 1 {
+        node "Teachers"
+        node "AdmEmployees"
+        node "Students"
+        node "System Developers"
+    }
+    frame  "2 Security" as 2 {
+        node "Rolebased Login"
+    }
+    frame "3 Interfaces" as 3 {
+        node "Teacher GUI"
+        node "AdmEMployee GUI"
+        node "Student GUI"
+        node "SysDev UI services"
+    }
+    frame "4 Functionalities" as 4 {
+        node "View course schedule"
+        node "View requests status"
+        node "Create request"
+        node "Handle request"
+        node "View course info"
+    }
+    frame "5 ADMBK Databases" as 5 {
+        node "SqlDatabase"
+    }
+    frame "6 Supporting Databases" as 6 {
+        node "KU database"
+        node "DTU database"
+    }
+}
+1 -down-> 2
+2 -down-> 3
+3 -down-> 4
+4 -down-> 5
+5 <-down-> 6
+@enduml

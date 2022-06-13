@@ -1,0 +1,58 @@
+@startuml
+Actor "Admnistrative employee" #Silver
+participant "ADMBK GUI" as AG #Silver
+Database Database as DB #Silver
+Actor Teachers #Silver
+
+activate "Admnistrative employee"
+"Admnistrative employee" -> AG ++ : "Admnistrative employee" Log-In
+deactivate "Admnistrative employee"
+AG -> DB ++ : Checks if login is valid
+opt#Silver #Beige Log-in Successful
+AG <-- DB : Log-In valid
+deactivate DB
+activate "Admnistrative employee"
+"Admnistrative employee" <-- AG : "Log-In was successful"
+deactivate "Admnistrative employee"
+
+opt#Silver #Beige Handle schedule request Successful
+activate DB
+AG <-- DB : Retrive requests with status "Pending"
+deactivate DB
+activate "Admnistrative employee"
+"Admnistrative employee" <-- AG : Shows requests with status "Pending"
+"Admnistrative employee" -> AG : Handles a request
+deactivate "Admnistrative employee"
+activate DB
+AG -> DB : Checks if request can be made or not
+AG <-- DB : Request updated with status "Accepted" or "Declined"
+deactivate DB
+AG --> Teachers : Request changes and status visible for Teachers
+activate "Admnistrative employee"
+"Admnistrative employee" <-- AG : Request deleted from Admnistrative employee view
+deactivate "Admnistrative employee"
+else #Khaki Handle schedule request Failure
+activate DB
+AG <-- DB : Doesn't retrive requests with status "Pending"
+deactivate DB
+activate "Admnistrative employee"
+"Admnistrative employee" <-- AG : Doesn't show requests with status "Pending"
+"Admnistrative employee" -> AG : Handles a request
+deactivate "Admnistrative employee"
+activate DB
+AG -> DB : Checks if request can be made or not
+AG <-- DB : Request not updated with status "Accepted"
+activate "Admnistrative employee"
+"Admnistrative employee" <-- AG : Request not deleted from view
+deactivate "Admnistrative employee"
+end
+else #Khaki Log-in Failure
+AG <-- DB : Log-In invalid
+deactivate DB
+activate "Admnistrative employee"
+"Admnistrative employee" <-- AG : "Log-In was declined"
+deactivate "Admnistrative employee"
+deactivate AG
+end
+
+@enduml

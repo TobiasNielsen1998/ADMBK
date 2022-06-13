@@ -1,0 +1,30 @@
+left to right direction
+actor Teacher as t
+actor "Administrative employee" as a
+actor Student as s
+actor "System developer" as dev
+
+rectangle ADMBK as ADMBK {
+    usecase "Teacher whises to check schedule for a course" as 1
+    usecase "Teacher whises to request changes to a schdule" as 2
+    usecase "Request created with status "Pending"" as 3
+    usecase "Teacher wishes to check status of request" as 4
+    usecase "Administrative employee wishes to check requests" as 5
+    usecase "Administrative employee manages request" as 6
+    usecase "Request status updated to "Accepted" or "Denied" " as 7
+    usecase "Administrative employee whises to check schedule for a course" as 8
+    usecase "Student whises to check schedule for a course" as 9
+    usecase "Student whises to check notifications about courseschedule changes" as 10
+    usecase "Maintaining ADMBKsystem" as 11
+}
+2 --> 3
+6 --> 7
+t ---> "UC1"  1
+t ---> "UC2" 2
+t ---> "UC3" 4
+a ---> "UC4" 5
+a ---> "UC5" 6
+a ---> "UC6" 8
+s ---> "UC7" 9
+s ---> "UC8" 10
+11 <--- "UC9" dev

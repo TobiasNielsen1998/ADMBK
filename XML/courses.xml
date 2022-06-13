@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<kurser>
+  <kursus>
+    <kursusID>121</kursusID>
+    <kursusnavn>Sundhedsvidenskabelig statistik</kursusnavn>
+    <fakultet>KU - DIKU</fakultet>
+    <lokale>12</lokale>
+    <skema>'2022-11-13 11:00:00 - 16:00:00'
+ '2022-11-14 11:00:00 - 16:00:00'
+ '2022-11-15 11:00:00 - 16:00:00'
+ '2022-11-16 11:00:00 - 16:00:00'
+ '2022-11-17 11:00:00 - 16:00:00'
+ '2022-11-20 11:00:00 - 16:00:00'
+ '2022-11-21 11:00:00 - 16:00:00'
+ '2022-11-22 11:00:00 - 16:00:00'
+ '2022-11-23 11:00:00 - 16:00:00'
+ '2022-11-24 11:00:00 - 16:00:00'</skema>
+    <underviser>
+      <info>
+        <navn>Tobias Nielsen</navn>
+        <brugerID>slg250</brugerID>
+        <cpr>2110625629</cpr>
+        <tlf>+4512121212</tlf>
+        <email>slg250@ku.dk</email>
+      </info>
+    </underviser>
+  </kursus>
+  <kursus>
+    <kursusID>213</kursusID>
+    <kursusnavn>Kvant &amp; kval undersøgelsesmetoder</kursusnavn>
+    <fakultet>KU - Pharma</fakultet>
+    <lokale>65</lokale>
+    <skema>'2022-10-13 09:00:00 - 15:00:00'
+ '2022-10-14 09:00:00 - 15:00:00'
+ '2022-10-15 09:00:00 - 15:00:00'
+ '2022-10-16 09:00:00 - 15:00:00'
+ '2022-10-17 09:00:00 - 15:00:00'
+ '2022-10-20 09:00:00 - 15:00:00'
+ '2022-10-21 09:00:00 - 15:00:00'
+ '2022-10-22 09:00:00 - 15:00:00'
+ '2022-10-23 09:00:00 - 15:00:00'
+ '2022-10-24 09:00:00 - 15:00:00'</skema>
+    <underviser>
+      <info>
+        <navn>Nanakjot Singh</navn>
+        <brugerID>nak999</brugerID>
+        <cpr>2110625629</cpr>
+        <tlf>+4537297438</tlf>
+        <email>nak999@ku.dk</email>
+      </info>
+    </underviser>
+  </kursus>
+  <kursus>
+    <kursusID>321</kursusID>
+    <kursusnavn>It-projektledelse</kursusnavn>
+    <fakultet>DTU - Management</fakultet>
+    <lokale>24</lokale>
+    <skema>'2022-06-15 10:00:00 - 12:00:00'
+ '2022-11-13 11:00:00 - 15:00:00'
+ '2022-11-14 11:00:00 - 15:00:00'
+ '2022-11-15 11:00:00 - 15:00:00'
+ '2022-11-16 11:00:00 - 15:00:00'
+ '2022-11-17 11:00:00 - 15:00:00'
+ '2022-11-20 11:00:00 - 15:00:00'
+ '2022-11-21 11:00:00 - 15:00:00'
+ '2022-11-22 11:00:00 - 15:00:00'
+ '2022-11-23 11:00:00 - 15:00:00'
+ '2022-11-24 11:00:00 - 15:00:00'</skema>
+    <underviser>
+      <info>
+        <navn>Kasper Hinze</navn>
+        <brugerID>kap111</brugerID>
+        <cpr>2110625629</cpr>
+        <tlf>+4537297438</tlf>
+        <email>kap111@ku.dk</email>
+      </info>
+    </underviser>
+  </kursus>
+  <kursus>
+    <kursusID>453</kursusID>
+    <kursusnavn>Programmering</kursusnavn>
+    <fakultet>KU - DIKU</fakultet>
+    <lokale>56</lokale>
+    <skema>'2022-08-13 11:00:00 - 16:00:00'
+ '2022-08-14 11:00:00 - 16:00:00'
+ '2022-08-15 11:00:00 - 16:00:00'
+ '2022-08-16 11:00:00 - 16:00:00'
+ '2022-08-17 11:00:00 - 16:00:00'
+ '2022-08-20 11:00:00 - 16:00:00'
+ '2022-08-21 11:00:00 - 16:00:00'
+ '2022-08-22 11:00:00 - 16:00:00'
+ '2022-08-23 11:00:00 - 16:00:00'
+ '2022-08-24 11:00:00 - 16:00:00'</skema>
+    <underviser>
+      <info>
+        <navn>Tobias Nielsen</navn>
+        <brugerID>slg250</brugerID>
+        <cpr>2110625629</cpr>
+        <tlf>+4512121212</tlf>
+        <email>slg250@ku.dk</email>
+      </info>
+    </underviser>
+  </kursus>
+</kurser>

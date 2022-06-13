@@ -1,0 +1,45 @@
+@startuml
+Actor Teacher #Silver
+participant "ADMBK GUI" as AG #Silver
+Database Database as DB #Silver
+Actor "Administrative employees" #Silver
+
+activate Teacher
+Teacher -> AG ++ : Teacher Log-In
+deactivate Teacher
+AG -> DB ++ : Checks if login is valid
+opt#Silver #Beige Log-in Successful
+AG <-- DB : Log-In valid
+deactivate DB
+activate Teacher
+Teacher <-- AG : "Log-In was successful"
+
+opt#Silver #Beige Request schedule change Successful
+Teacher -> AG : Create schedule change request
+deactivate Teacher
+activate DB
+AG -> DB : Checks if request is valid
+AG <-- DB : Request stored with status "Pending"
+deactivate DB
+AG --> "Administrative employees" : Request visible for the Administrative employees
+activate Teacher
+Teacher <-- AG : Request shows with status "Pending"
+else #Khaki Request schedule change Failure
+Teacher -> AG : Create schedule change request
+deactivate Teacher
+activate DB
+AG -> DB : Checks if request is valid
+AG <-- DB : Request not valid or doesn't have status "Pending"
+activate Teacher
+Teacher <-- AG : Request doesn't shows with status "Pending"
+end
+
+else #Khaki Log-in Failure
+AG <-- DB : Log-In invalid
+deactivate DB
+Teacher <-- AG : "Log-In was declined"
+deactivate Teacher
+deactivate AG
+end
+
+@enduml

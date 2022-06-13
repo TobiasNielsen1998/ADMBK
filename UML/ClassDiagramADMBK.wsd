@@ -1,0 +1,192 @@
+@startuml "ADMBK"
+
+class Teacher {
+    +Name : str
+    +UserID : str
+    +CPR : str
+    +Phone : str
+    +Email : str
+    +Getname() : str
+    +SetName()
+    +GetUserID() : str
+    +SetUserID()
+    +GetCPR() : str
+    +SetCPR()
+    +GetPhone() : str
+    +SetPhone()
+    +GetEmail() : str
+    +SetEmail()
+}
+
+class AdmEmployee {
+    +Name : str
+    +UserID : str
+    +CPR : str
+    +Phone : str
+    +Email : str
+    +Getname() : str
+    +SetName()
+    +GetUserID() : str
+    +SetUserID()
+    +GetCPR() : str
+    +SetCPR()
+    +GetPhone() : str
+    +SetPhone()
+    +GetEmail() : str
+    +SetEmail()
+}
+
+class Users {
+    +Teachers : Teacher
+    +AdmEmployees : AdmEmployee
+    +AppendTeachers()
+    +AppendAdmEmps()
+    +GetAdmEmps() : list
+    +GetTeachers() : list
+}
+
+class Course {
+    +CourseID : int
+    +CourseName : str
+    +CourseFaculty : str
+    +CourseRoom : int
+    +CourseTeacher : Teacher
+    +GetCourseID() : int
+    +SetCourseID()
+    +GetCourseName() : str
+    +SetCourseName()
+    +GetCourseFaculty() : str
+    +SetCourseFaculty()
+    +GetCourseRoom() : int
+    +SetCourseRoom()
+    +GetCourseSchedule() : str
+    +ChangeCourseSchedule() : Schedules
+    +SetCourseTeacher()
+}
+
+class Schedules {
+    +AddCourseDay() : datetime
+    +RemoveCourseDay() : datetime
+    +ScheduleRequests() : Requests
+}
+
+class Requests {
+    RequestStatus = Pending
+    +ScheduleRequest() : str
+}
+
+class Courses {
+    +AppendCourse()
+    +GetCourses() : list
+}
+
+class LoginTeacher {
+    +Teachers : Teachers
+    +Courses : Courses
+    +Login() : GUI
+    +Quit()
+}
+
+class LoginTeacherGUI << (G,#FF7700) >> #aliceblue ##[dotted]blue {
+    GUI
+}
+
+class LoginAdmEmp {
+    +AdmEmployees : AdmEmployee
+    +Courses : Courses
+    +Login() : GUI
+    +Quit()
+}
+
+class LoginAdmEmpGUI << (G,#FF7700) >> #aliceblue ##[dotted]blue {
+    GUI
+}
+
+class TeacherRequest {
+    +Courses : Courses
+    +GetCourses() : list
+    +GetCourseInfo() : str
+    +GetRequests() : list
+    +CreateRequest() : str
+    +QuitRequesting()
+}
+
+class TeacherRequestGUI << (G,#FF7700) >> #aliceblue ##[dotted]blue {
+    GUI
+}
+
+class AdmEmpManaging {
+    +Courses : Courses
+    +Users : Teacher
+    +GetCourses() : list
+    +GetCourseInfo() : str
+    +GetRequests() : list
+    +MakeCourseChange()
+    +UpdateRequestStatus()
+    +CreateValidateCourseXML() : bool
+    +QuitManaging()
+}
+
+class AdmEmpManagingGUI << (G,#FF7700) >> #aliceblue ##[dotted]blue {
+    GUI
+}
+
+class SqlDatabase {
+    +SqlQuery : str
+    +DropTable()
+    +dbDDL()
+    +dbDML()
+}
+
+class ADMBKmenu {
+    +TeacherMenu() : GUI
+    +AdmEmpMenu() : GUI
+}
+
+class ADMBKmenuGUI << (G,#FF7700) >> #aliceblue ##[dotted]blue {
+    GUI
+}
+
+class CourseToXML {
+    +Courses : Courses
+    +Teachers : Teacher
+    +WriteFile() : XML
+}
+
+class XMLtoCourse {
+    +XMLfileName : str
+    +ParseXML() -> Courses
+}
+
+class Elements {
+    +{static} CreateCourse() : Courses
+    +{static} CreateTeacher() : Teacher
+}
+
+ADMBKmenu "1..1" <-up- "0..3" SqlDatabase :Setting up ADMBK
+ADMBKmenu "1..1" *-left- "2..*" Users : contains
+ADMBKmenu "1..1" *-down- "1..*" Courses :contains
+ADMBKmenu "1..1" -down-> "1..1" LoginTeacher : Login
+ADMBKmenu "1..1" -down-> "1..1" LoginAdmEmp : Login
+ADMBKmenu "1..1" *.right. "1..1" ADMBKmenuGUI #line:green;text:green :ADMBK menu \n window
+Courses "1..1" o-down- "1..*" Course : has
+Users "1..1" o-down- "1..*" Teacher : has
+Users "1..1" o-down- "1..*" AdmEmployee : has
+Course "1..1" o-right- "1..1" Schedules : has a
+Course "1..*" o-up- "1..1" Teacher : has
+Schedules "1..1" o-right- "0..*" Requests :has 
+LoginTeacher "1..1" *. "1..1" LoginTeacherGUI #line:green;text:green :Login \n window
+LoginTeacher "1..1" -down-> "1..1" TeacherRequest : Start requesting
+TeacherRequest "1..1" *. "1..1" TeacherRequestGUI #line:green;text:green :Requesting \n window
+TeacherRequest "1..1" -down- "0..*" Requests
+LoginAdmEmp "1..1" *. "1..1" LoginAdmEmpGUI #line:green;text:green :Login \n window
+LoginAdmEmp "1..1" -down-> "1..1" AdmEmpManaging : Start handeling requests
+AdmEmpManaging "1..1" *. "1..1" AdmEmpManagingGUI #line:green;text:green :Managing \n window
+AdmEmpManaging "1..1" -down- "1..1" CourseToXML
+AdmEmpManaging "1..1" -down- "1..1" XMLtoCourse
+XMLtoCourse "1..1" -down- "1..1" Courses 
+XMLtoCourse "1..1" -down- "1..*" Course
+CourseToXML "1..1" -down- "1..*" Course
+CourseToXML "1..1" -down- "1..2" Elements
+
+@enduml

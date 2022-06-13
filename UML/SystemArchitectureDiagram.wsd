@@ -1,0 +1,38 @@
+@startuml
+left to right direction
+skinparam actorStyle awesome
+skinparam usecase {
+BackgroundColor DarkSeaGreen
+BorderColor DarkSlateGray
+
+BackgroundColor<< Main >> YellowGreen
+BorderColor<< Main >> YellowGreen
+
+ArrowColor Olive
+ActorBorderColor black
+ActorFontName Courier
+
+ActorBackgroundColor<< Human >> Gold
+}
+
+actor User as U
+rectangle Controller as C {
+    ("SOFTWARE")
+}
+rectangle Views as V {
+    ("GUI")
+}
+rectangle Model as M {
+    ("DATABASES")
+}
+rectangle "MySQL database" as SQL {
+}
+
+U -> V : "Login"
+V ..> C : "User Input"
+C --> M : "Modifies data"
+M --> V : "Updating view"
+M --> SQL : "Push data"
+SQL --> M : "Pull data"
+
+@enduml
